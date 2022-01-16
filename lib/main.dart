@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:sylhet_mart/constant.dart';
 import 'package:sylhet_mart/pages/welcome_page.dart';
 
 void main() async {
@@ -18,8 +18,18 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'E Commerce App',
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Sylhet Mart',
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white70,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+        ),
+      ),
+      //darkTheme: ThemeData.dark(),
       home: WelcomePage(),
     );
   }

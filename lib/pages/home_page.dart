@@ -1,10 +1,10 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sylhet_mart/constant.dart';
 import 'package:sylhet_mart/screens/account_screen.dart';
 import 'package:sylhet_mart/screens/cart_screen.dart';
 import 'package:sylhet_mart/screens/home_screen.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     List<Widget> _widgetOptions = <Widget>[
       const HomeScreen(),
+      Container(),
       const CartScreen(),
       const AccountScreen(),
     ];
@@ -36,28 +37,35 @@ class _HomePageState extends State<HomePage> {
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(25), topRight: Radius.circular(25)),
             child: BottomNavigationBar(
-              type: BottomNavigationBarType.shifting,
+              backgroundColor: formcolor,
+              type: BottomNavigationBarType.fixed,
               elevation: 5,
-              selectedItemColor: Colors.yellowAccent[400],
-              selectedFontSize: 15,
+              selectedItemColor: Colors.pink[900],
+              showUnselectedLabels: true,
+              selectedFontSize: 20,
               selectedLabelStyle: GoogleFonts.abrilFatface(fontSize: 12),
               currentIndex: _selectedIndex,
               onTap: _onItemTapped,
-              items: <BottomNavigationBarItem>[
+              items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
-                  icon: const Icon(Icons.home),
+                  icon: Icon(
+                    Icons.home,
+                  ),
                   label: 'Home',
-                  backgroundColor: Colors.pink[800],
                 ),
                 BottomNavigationBarItem(
-                  icon: const Icon(Icons.shopping_cart),
-                  label: 'Call',
-                  backgroundColor: Colors.pink[800],
+                  icon: Icon(
+                    Icons.favorite,
+                  ),
+                  label: 'Wish List',
                 ),
                 BottomNavigationBarItem(
-                  icon: const Icon(Icons.account_circle_rounded),
+                  icon: Icon(Icons.shopping_cart),
+                  label: 'Cart',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.account_circle_rounded),
                   label: 'Account',
-                  backgroundColor: Colors.pink[800],
                 ),
               ],
             ),

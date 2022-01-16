@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../constant.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -25,9 +26,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Text(
                       'Log In',
                       style: GoogleFonts.akayaTelivigala(
-                          fontSize: 25,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                          fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),

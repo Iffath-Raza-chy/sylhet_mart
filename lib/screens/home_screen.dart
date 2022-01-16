@@ -1,6 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sylhet_mart/constant.dart';
+import 'package:sylhet_mart/screens/cart_screen.dart';
+import 'package:sylhet_mart/screens/login_screen.dart';
+import 'package:sylhet_mart/widgets/categories.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,133 +18,118 @@ class _HomeScreenState extends State<HomeScreen> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(119, 101, 128, 100),
+      backgroundColor: formcolor,
       appBar: AppBar(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(15),
-                bottomRight: Radius.circular(15))),
+        title: Text(
+          'Sylhet Mart',
+          style: TextStyle(color: Colors.red[600], fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
-        title: const Text('Home'),
-        backgroundColor: Colors.pink[900],
+        leading: Icon(
+          Icons.arrow_back,
+        ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 5),
+            child: Icon(
+              Icons.notifications_outlined,
+            ),
+          )
+        ],
       ),
       body: ListView(
         shrinkWrap: true,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 5, bottom: 5),
-            child: Center(
-              child: Text(
-                'Categories',
-                style: GoogleFonts.alice(fontSize: 20),
+            padding: EdgeInsets.only(bottom: 5),
+            child: Container(
+              color: Colors.white70,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(8, 15, 8, 10),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: formcolor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        prefixIcon: Icon(Icons.search),
+                        hintText: 'What woukd you like to buy?',
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              InkWell(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(25),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.black45,
+          Padding(
+            padding: EdgeInsets.only(top: 8, bottom: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  child: InkWell(
+                    child: Container(
+                      color: Colors.white70,
+                      height: 50,
+                      child: Center(
+                        child: Text('Categories'),
+                      ),
                     ),
-                    height: height * 0.12,
-                    width: width * 0.3,
-                    child: Stack(
-                      children: [
-                        Image.asset(
-                          'assets/images/categories/electdevices.png',
-                          fit: BoxFit.cover,
-                        ),
-                        Center(
-                          child: Text(
-                            'Electronics',
-                            style: GoogleFonts.bowlbyOneSc(
-                                color: Colors.white,
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    ),
+                    onTap: () {
+                      print('Categories');
+                    },
                   ),
                 ),
-                onTap: () {},
-              ),
-              InkWell(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(25),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.black45,
+                const SizedBox(
+                  width: 2,
+                ),
+                Expanded(
+                  child: InkWell(
+                    child: Container(
+                      color: Colors.white70,
+                      height: 50,
+                      child: const Center(
+                        child: Text('Brands'),
+                      ),
                     ),
-                    height: height * 0.15,
-                    width: width * 0.3,
-                    child: Stack(
-                      children: [
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: 8, right: 8, top: 9),
-                          child: Image.asset(
-                            'assets/images/categories/grocery.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Center(
-                          child: Text(
-                            'Groceries',
-                            style: GoogleFonts.alikeAngular(
-                                color: const Color.fromRGBO(0, 242, 255, 100),
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    ),
+                    onTap: () {
+                      print('Brands');
+                    },
                   ),
                 ),
-                onTap: () {
-                  print('object');
-                },
-              ),
-              InkWell(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(25),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.black45,
+                const SizedBox(
+                  width: 2,
+                ),
+                Expanded(
+                  child: InkWell(
+                    child: Container(
+                      color: Colors.white70,
+                      height: 50,
+                      child: const Center(
+                        child: Text('Shops'),
+                      ),
                     ),
-                    height: height * 0.15,
-                    width: width * 0.3,
-                    child: Stack(
-                      children: [
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(top: 5, left: 8, right: 8),
-                          child: Image.asset(
-                            'assets/images/categories/sports.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Center(
-                          child: Text(
-                            'Sports',
-                            style: GoogleFonts.alikeAngular(
-                                color: const Color.fromRGBO(0, 242, 255, 100),
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    ),
+                    onTap: () {
+                      print('Shops');
+                    },
                   ),
                 ),
-                onTap: () {
-             
-                  print('object');
-                },
-              ),
-            ],
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Categories(
+            dheight: height,
+            dwidth: width,
           )
         ],
       ),

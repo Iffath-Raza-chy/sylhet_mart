@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -27,9 +26,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Text(
                       'Sign Up',
                       style: GoogleFonts.akayaTelivigala(
-                          fontSize: 25,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                          fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -122,7 +119,6 @@ class _SignUpPageState extends State<SignUpPage> {
                         borderRadius: BorderRadius.circular(15),
                         color: formcolor),
                     child: TextFormField(
-                      cursorColor: Colors.black,
                       decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.lock),
                           suffixIcon: InkWell(
@@ -149,7 +145,6 @@ class _SignUpPageState extends State<SignUpPage> {
                         borderRadius: BorderRadius.circular(15),
                         color: formcolor),
                     child: TextFormField(
-                      cursorColor: Colors.black,
                       decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.lock),
                           suffixIcon: InkWell(
