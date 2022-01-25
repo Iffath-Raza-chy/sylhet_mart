@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sylhet_mart/constant.dart';
 import 'package:sylhet_mart/pages/home_page.dart';
 import 'package:sylhet_mart/screens/login_screen.dart';
 import 'package:sylhet_mart/screens/signup_screen.dart';
@@ -34,39 +35,6 @@ class _WelcomePageState extends State<WelcomePage> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const HomePage(),
-                                ),
-                              );
-                            });
-                          },
-                          child: Padding(
-                              padding: const EdgeInsets.only(
-                                top: 8,
-                                bottom: 8,
-                                left: 50,
-                                right: 50,
-                              ),
-                              child: pageno == 0
-                                  ? const Text('Log In',
-                                      style: TextStyle(
-                                        letterSpacing: 2,
-                                      ))
-                                  : const Text('Sign Up',
-                                      style: TextStyle(
-                                        letterSpacing: 2,
-                                      ))),
-                        ),
                         const SizedBox(
                           height: 10,
                         ),

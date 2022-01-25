@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sylhet_mart/pages/welcome_page.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Sylhet Mart',
       theme: ThemeData(
@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       //darkTheme: ThemeData.dark(),
-      home: WelcomePage(),
+      home: const WelcomePage(),
     );
   }
 }

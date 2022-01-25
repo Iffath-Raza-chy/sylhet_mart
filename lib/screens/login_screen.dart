@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sylhet_mart/loginrequest.dart';
+import 'package:sylhet_mart/pages/home_page.dart';
 
 import '../constant.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,6 +16,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  var ctEmailOrPhone = TextEditingController();
+  var ctPassword = TextEditingController();
+  var msg = "";
+  bool obs = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,14 +34,14 @@ class _LoginPageState extends State<LoginPage> {
                   child: Center(
                     child: Text(
                       'Log In',
-                      style: GoogleFonts.akayaTelivigala(
+                      style: GoogleFonts.baiJamjuree(
                           fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'Enter your login details to access your account',
                       textAlign: TextAlign.center,
@@ -48,16 +57,23 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.circular(15),
                         color: formcolor),
                     child: TextFormField(
+                      controller: ctEmailOrPhone,
                       cursorColor: Colors.blue,
-                      decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.email),
+                      decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              ctEmailOrPhone.clear();
+                            },
+                            icon: const Icon(Icons.clear),
+                          ),
+                          prefixIcon: const Icon(Icons.email),
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
                           disabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.only(
+                          contentPadding: const EdgeInsets.only(
                               left: 15, bottom: 15, top: 15, right: 15),
-                          hintText: "Email"),
+                          hintText: "Email/Phone"),
                     ),
                   ),
                 ),
@@ -68,13 +84,26 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.circular(15),
                         color: formcolor),
                     child: TextFormField(
+                      obscureText: obs,
+                      controller: ctPassword,
                       cursorColor: Colors.black,
                       decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.lock),
-                          suffixIcon: InkWell(
-                            child: const Icon(Icons.remove_red_eye),
-                            onTap: () {
-                              print('object');
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              Icons.remove_red_eye,
+                              color: obs ? Colors.grey[700] : Colors.blue,
+                            ),
+                            onPressed: () {
+                              if (obs == true) {
+                                setState(() {
+                                  obs = false;
+                                });
+                              } else if (obs == false) {
+                                setState(() {
+                                  obs = true;
+                                });
+                              }
                             },
                           ),
                           border: InputBorder.none,
@@ -104,14 +133,40 @@ class _LoginPageState extends State<LoginPage> {
                         ]),
                       ),
                     ),
-                    onTap: () {
-                      print('tapped');
-                    },
+                    onTap: () {},
                   ),
                 ),
                 const SizedBox(
                   height: 30,
-                )
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                  onPressed: () async {
+                    setState(() {
+                      username = ctEmailOrPhone.text;
+                      password = ctPassword.text;
+                      loginRequest();
+                    });
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.only(
+                      top: 8,
+                      bottom: 8,
+                      left: 50,
+                      right: 50,
+                    ),
+                    child: Text(
+                      'Log In',
+                      style: TextStyle(
+                        letterSpacing: 2,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
