@@ -17,10 +17,10 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        var avconstraints =
-            ((constraints.maxHeight + constraints.maxHeight) / 2);
-        var height = constraints.maxHeight;
-        var width = constraints.maxWidth;
+        // var avconstraints =
+        //     ((constraints.maxHeight + constraints.maxHeight) / 2);
+        // var height = constraints.maxHeight;
+        // var width = constraints.maxWidth;
         return Scaffold(
           resizeToAvoidBottomInset: true,
           body: Center(

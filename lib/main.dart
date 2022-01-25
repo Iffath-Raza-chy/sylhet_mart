@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sylhet_mart/constant.dart';
 import 'package:sylhet_mart/pages/welcome_page.dart';
 
 void main() async {

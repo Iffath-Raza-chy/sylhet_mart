@@ -12,10 +12,13 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.deepPurple,
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Categories(dheight: MediaQuery.of(context).size.height,dwidth: MediaQuery.of(context).size.width,));
-    ;
+      color: Colors.deepPurple,
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      child: Categories(
+        dheight: MediaQuery.of(context).size.height,
+        dwidth: MediaQuery.of(context).size.width,
+      ),
+    );
   }
 }

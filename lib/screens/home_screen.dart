@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sylhet_mart/constant.dart';
-import 'package:sylhet_mart/screens/cart_screen.dart';
-import 'package:sylhet_mart/screens/login_screen.dart';
 import 'package:sylhet_mart/widgets/categories.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -25,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(color: Colors.red[600], fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        leading: Icon(
+        leading: const Icon(
           Icons.arrow_back,
         ),
         actions: const [
@@ -41,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
         shrinkWrap: true,
         children: [
           Padding(
-            padding: EdgeInsets.only(bottom: 5),
+            padding: const EdgeInsets.only(bottom: 5),
             child: Container(
               color: Colors.white70,
               child: Padding(
@@ -69,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 8, bottom: 8),
+            padding: const EdgeInsets.only(top: 8, bottom: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -78,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       color: Colors.white70,
                       height: 50,
-                      child: Center(
+                      child: const Center(
                         child: Text('Categories'),
                       ),
                     ),
