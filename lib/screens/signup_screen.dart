@@ -60,7 +60,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   var msg = '';
   newUserRegistration() async {
-    String link = 'https://api.ishaqi.com/customerlogin';
+    String link = 'https://api.ishaqi.com/customerignup';
     Uri url = Uri.parse(link);
     Map data = {
       'customer_name': _firstname.text + ' ' + _lastname.text,
@@ -473,9 +473,11 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            setState(() {
-                              newUserRegistration();
-                            });
+                            setState(
+                              () {
+                                newUserRegistration();
+                              },
+                            );
                           }
                         },
                         child: const Padding(

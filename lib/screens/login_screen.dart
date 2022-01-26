@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sylhet_mart/loginrequest.dart';
 import 'package:sylhet_mart/pages/home_page.dart';
 
 import '../constant.dart';
@@ -19,7 +20,55 @@ class _LoginPageState extends State<LoginPage> {
   var ctEmailOrPhone = TextEditingController();
   var ctPassword = TextEditingController();
   var msg = "";
+  var username = '';
+  var password = '';
+
   bool obs = true;
+
+  loginRequest() async {
+    String link = 'https://api.ishaqi.com/customerlogin';
+    String body;
+    var jsonString;
+
+    Uri url = Uri.parse(link);
+    Map data = {
+      'user_name': username,
+      'password': password,
+    };
+
+    body = json.encode(data);
+
+    var response = await http.post(url, body: body, headers: {
+      'Content-Type': 'application/json',
+    });
+
+    // print(response.statusCode);
+    // print(response.body);
+
+    // print(username);
+    // print(password);
+
+    jsonString = jsonDecode(response.body);
+
+    // print(jsonString);
+    msg = jsonString['message'];
+    if (jsonString['status'] == 'SUCCESS') {
+      Get.snackbar(
+        'Success',
+        jsonString['message'],
+        backgroundColor: Colors.green,
+      );
+      Navigator.pop(context);
+      Get.to(const HomePage());
+    } else if (jsonString['status'] == 'ERROR') {
+      Get.snackbar(
+        'Error',
+        jsonString['message'],
+        backgroundColor: Colors.red,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
