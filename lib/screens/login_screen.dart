@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.green,
       );
       Navigator.pop(context);
-      Get.to(const HomePage());
+      Get.to(() => const HomePage());
     } else if (jsonString['status'] == 'ERROR') {
       Get.snackbar(
         'Error',

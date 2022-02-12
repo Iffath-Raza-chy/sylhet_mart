@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sylhet_mart/pages/welcome_page.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
